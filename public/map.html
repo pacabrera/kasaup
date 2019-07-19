@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>Kasaup Map</title>
+	<link rel="stylesheet" href="css/map_styles.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link type="text/css" href="css/materialize.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+		integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+		crossorigin=""></script>
+</head>
+
+<body>
+
+	<main id="mapid">
+	</main>
+
+	<footer class="flex-container borderadius-2">
+		<a data-target="side-form" class="pr-3 sidenav-trigger" href="#">
+			<svg width="75" height="75" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M16 0C7.16129 0 0 7.1543 0 15.9844C0 24.8145 7.16129 31.9688 16 31.9688C24.8387 31.9688 32 24.8145 32 15.9844C32 7.1543 24.8387 0 16 0ZM16 6.1875C19.1355 6.1875 21.6774 8.72695 21.6774 11.8594C21.6774 14.9918 19.1355 17.5312 16 17.5312C12.8645 17.5312 10.3226 14.9918 10.3226 11.8594C10.3226 8.72695 12.8645 6.1875 16 6.1875ZM16 28.3594C12.2129 28.3594 8.81936 26.6449 6.54839 23.9637C7.76129 21.682 10.1355 20.1094 12.9032 20.1094C13.0581 20.1094 13.2129 20.1352 13.3613 20.1803C14.2 20.451 15.0774 20.625 16 20.625C16.9226 20.625 17.8064 20.451 18.6387 20.1803C18.7871 20.1352 18.9419 20.1094 19.0968 20.1094C21.8645 20.1094 24.2387 21.682 25.4516 23.9637C23.1806 26.6449 19.7871 28.3594 16 28.3594Z"
+					fill="#122F41" />
+			</svg>
+		</a>
+		<button class="bold borderadius-1">Send a report</button>
+	</footer>
+
+
+	<!-- add recipe side nav -->
+	<div id="side-form" class="sidenav side-form">
+		<div class="add-recipe container section center">
+			<img class="responsive-img circle" id="account-image">
+			<h5 id="account-details"></h5>
+			<h6 id="account-email"></h6>
+			<div class="divider"></div>
+			<div class="input-field center">
+				<button class="btn-small" onclick="logout()">Logout</button>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="center">
+		<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Send a Report</a>
+	</div>
+
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<form class="add-recipe container section">
+				<h6>Send Report</h6>
+				<div class="divider"></div>
+				<blockquote>Please wait for emergency services to respond to your report. Provide a description of your
+					experience to help emergency dispatchers.</blockquote>
+				<div class="input-field col s6">
+					<textarea id="textarea1" class="materialize-textarea"
+						placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut ex tempus, vestibulum dui porta, vulputate neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras vitae pulvinar justo."></textarea>
+					<label for="textarea1">Description</label>
+				</div>
+				<div class="input-field center">
+					<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+					<button class="btn-small waves-effect waves-green">Report</button>
+
+				</div>
+
+		</div>
+
+
+
+
+
+
+
+		<!-- Map -->
+		<script src="js/map.js"></script>
+
+		<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+		<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+
+		<!-- Add Firebase products that you want to use -->
+		<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: "AIzaSyDrXvX9hdQNn56SUIjBpn5eAuAtfNywh7s",
+				authDomain: "kasaup-pwa.firebaseapp.com",
+				databaseURL: "https://kasaup-pwa.firebaseio.com",
+				projectId: "kasaup-pwa",
+				storageBucket: "kasaup-pwa.appspot.com",
+				messagingSenderId: "989161872311",
+				appId: "1:989161872311:web:5cc66e6432fec94c"
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+		</script>
+		<script>
+			initApp = function () {
+				firebase.auth().onAuthStateChanged(function (user) {
+					if (user) {
+						// User is signed in.
+						var displayName = user.displayName;
+						var email = user.email;
+						var photoURL = user.photoURL;
+						var uid = user.uid;
+						var providerData = user.providerData;
+						user.getIdToken().then(function (accessToken) {
+							document.getElementById('account-details').textContent = displayName;
+							document.getElementById('account-image').src = photoURL;
+							document.getElementById('account-email').textContent = email;
+						});
+						console.log('login');
+					} else {
+						window.location = 'index.html';
+					}
+				}, function (error) {
+					console.log(error);
+				});
+			};
+
+			window.addEventListener('load', function () {
+				initApp();
+			});
+
+			function logout() {
+				firebase.auth().signOut();
+			}
+
+		</script>
+		<script src="js/ui.js"></script>
+</body>
+
+</html>

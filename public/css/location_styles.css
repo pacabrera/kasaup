@@ -1,0 +1,123 @@
+@media only screen and (max-width: 960px) {
+  .desktop {
+  	display: none;
+  }
+
+  #logo {
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 30%;
+  	height: auto;
+  	margin-top: 70px;
+  }
+
+  .header {
+  	font-size: 3em;
+  	text-align: center;
+  	letter-spacing: 4px;
+  	margin-top: 10px;
+  	font-weight: bold;
+  }
+
+
+  #message {
+  	border:3px solid #ec553a;
+  	border-radius: 10px;
+  	padding: 20px;
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-bottom: 50px;
+  	width: 50%;
+  	text-align: center;
+  	font-size: 16px;
+  }
+
+  .top {
+  	font-weight: bold;
+  }
+
+  .okaybtn {
+  	border: 2px solid #ec553a;
+  	border-radius: 20px;
+  	color: #ec553a;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	padding-top: 5px;
+  	padding-bottom: 5px;
+  	background-color: #fff;
+  	margin-top: 10px;
+  	font-size: 15px;
+  	font-weight: bold;
+  }
+
+  .okaybtn:hover {
+  	background-color: #ec553a;
+  	color: #fff;
+  }
+
+  body {
+  	font-family: 'Roboto', sans-serif;
+  }
+
+  p {
+  	font-family: 'Roboto', sans-serif;
+  }
+}
+
+@media only screen and (min-width: 961px) {	
+	.mobile {
+		display: none;
+	}
+
+	.flex-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#message {
+		margin-top: 30vh;
+}
+
+
+#message {
+	border:3px solid #ec553a;
+	border-radius: 10px;
+	padding: 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	width: 50%;
+	text-align: center;
+	font-size: 16px;
+}
+
+.top {
+	font-weight: bold;
+}
+
+.okaybtn {
+	border: 2px solid #ec553a;
+	border-radius: 20px;
+	color: #ec553a;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #fff;
+	margin-top: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.okaybtn:hover {
+	background-color: #ec553a;
+	color: #fff;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+}

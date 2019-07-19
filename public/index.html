@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/location_styles.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+  
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.1.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.1.0/firebaseui.css" />
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDrXvX9hdQNn56SUIjBpn5eAuAtfNywh7s",
+        authDomain: "kasaup-pwa.firebaseapp.com",
+        databaseURL: "https://kasaup-pwa.firebaseio.com",
+        projectId: "kasaup-pwa",
+        storageBucket: "kasaup-pwa.appspot.com",
+        messagingSenderId: "989161872311",
+        appId: "1:989161872311:web:5cc66e6432fec94c"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.1.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.1.0/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: 'map.html',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        ],
+        // tosUrl and privacyPolicyUrl accept either url string or a callback
+        // function.
+        // Terms of service url/callback.
+        tosUrl: '<your-tos-url>',
+        // Privacy policy url/callback.
+        privacyPolicyUrl: function() {
+          window.location.assign('<your-privacy-policy-url>');
+        }
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+
+  ui.start('#firebaseui-auth-container', uiConfig);
+
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    window.location = 'map.html';
+  }
+});
+
+    </script>
+  </head>
+  <body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+         <div class="mobile">
+            <img id="logo" src="img/acdrrmo_logo.png">
+            <p class="header">Kasáup</p>
+       <div id="firebaseui-auth-container"></div>
+         </div>
+
+         <div class="desktop">
+            <div class="flex-container">
+              <div id="message">
+                <p class="top">We're sorry,</p>
+                <p class="bottom">This application is designed for mobile devices.<br>Viewing on desktops is temporarily restricted.</p>
+                <a href="#"><button class="okaybtn">Okay</button></a>
+              </div>
+            </div>
+          </div>
+  </body>
+</html>
